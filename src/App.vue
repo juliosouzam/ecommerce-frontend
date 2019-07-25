@@ -2,10 +2,12 @@
   <div id="app">
     <navbar></navbar>
     <router-link to="/home">Go home</router-link>
-    <router-view></router-view>
+    <router-view />
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  
+};
 </script>
