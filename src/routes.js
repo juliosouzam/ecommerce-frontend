@@ -19,8 +19,13 @@ export default new Router({
             component: Home
         },
         {
-            path: '/products',
-            name: 'products',
+            path: '/:category',
+            name: 'categories',
+            component: Product
+        },
+        {
+            path: '/:category/:subcategory',
+            name: 'subcategories',
             component: Product
         }
     ]

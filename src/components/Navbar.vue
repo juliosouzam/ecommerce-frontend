@@ -15,21 +15,15 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <router-link class="nav-link" to="/home">SESI</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/home">IEL</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/home">SENAI</router-link>
+        <li class="nav-item" v-for="category in categories" :key="category.id">
+          <router-link class="nav-link" :to="`/${category.slug}`">{{ category.name }}</router-link>
         </li>
       </ul>
 
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <router-link class="nav-link" to="/home">
-            Produtos
+            Carrinho
             <span class="badge badge-pill badge-light">{{ cartItems }}</span>
           </router-link>
         </li>
@@ -42,29 +36,21 @@
 import axios from "./../services/api";
 
 export default {
-  props: {
-    //
-  },
   data() {
     return {
-      cartItems: 0
+      cartItems: 0,
+      categories: []
     };
   },
   mounted() {
-    this.getCart();
+    this.getCategories();
   },
   methods: {
-    getCart() {
-      axios
-        .get(
-          "/products/quo-fuga-quaerat-nulla-excepturi-officia-1564054644/getCart"
-        )
-        .then(response => {
-          this.cartItems = response.data.items.length;
-        });
-    },
-    getProducts() {
-      //   axios.get()
+    getCategories() {
+      axios.get(`/categories`)
+        .then((response) => {
+          this.categories = response.data.categories;
+        })
     }
   }
 };

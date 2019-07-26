@@ -23,13 +23,7 @@ export default {
             products: []
         }
     },
-    mounted() {
-        this.getProducts()
-    },
     methods: {
-        getProducts() {
-            axios.get();
-        },
         addToCart(product) {
             axios.post(`/products/${product.slug}/addToCart`);
         }
