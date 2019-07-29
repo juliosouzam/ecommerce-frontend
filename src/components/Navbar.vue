@@ -24,8 +24,14 @@
         <li class="nav-item">
           <router-link class="nav-link" to="/home">
             Carrinho
-            <span class="badge badge-pill badge-light">{{ cartItems }}</span>
+            <span class="badge badge-pill badge-secondary">{{ cartItems }}</span>
           </router-link>
+        </li>
+        <li class="nav-item">
+          <a href="#" id="anchorModal" class="nav-link" data-toggle="modal" data-target="#authModal">
+            <i class="fas fa-user"></i>
+          </a>
+          <AuthModal></AuthModal>
         </li>
       </ul>
     </div>
@@ -34,8 +40,12 @@
 
 <script>
 import axios from "./../services/api";
+import AuthModal from './../components/AuthModal';
 
 export default {
+  components: {
+    AuthModal
+  },
   data() {
     return {
       cartItems: 0,
@@ -47,10 +57,9 @@ export default {
   },
   methods: {
     getCategories() {
-      axios.get(`/categories`)
-        .then((response) => {
-          this.categories = response.data.categories;
-        })
+      axios.get(`/categories`).then(response => {
+        this.categories = response.data.categories;
+      });
     }
   }
 };

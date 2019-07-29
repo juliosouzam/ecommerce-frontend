@@ -1,8 +1,10 @@
 <template>
   <div class="container">
     <div class="row justify-content-between">
-      <div class="card" v-for="product in products" :key="product.id">
-        <ProductItem :product="product"></ProductItem>
+      <div class="col-4 d-flex align-items-stretch mt-4" v-for="product in products" :key="product.id">
+        <div class="card">
+          <ProductItem :product="product"></ProductItem>
+        </div>
       </div>
     </div>
   </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-4">
+      <div class="col-3 mt-4">
         <div class="card">
           <div class="card-body">
             <ul>
@@ -11,11 +11,9 @@
             </ul>
           </div>
         </div>
-        <div>Product List</div>
-        <div>{{ category }}</div>
       </div>
       <div class="col-8" v-if="subcategory">
-        <ProductItem :products="products"></ProductItem>
+        <ProductList :products="products"></ProductList>
       </div>
     </div>
   </div>
@@ -23,11 +21,11 @@
 
 <script>
 import axios from "./../services/api";
-import ProductItem from "./ProductList";
+import ProductList from "./ProductList";
 
 export default {
   components: {
-    ProductItem
+    ProductList
   },
   data() {
     return {
