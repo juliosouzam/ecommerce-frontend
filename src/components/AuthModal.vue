@@ -103,17 +103,78 @@ export default {
       this.loginMode = !this.loginMode;
     },
     submitLogin() {
-      toastr.success("logged in");
+      this.loading = !this.loading;
+      axios
+        .post(`/auth/login`, this.form)
+        .then(response => {
+          this.loginMode = true;
+          this.$toasted.show(response.data.message, {
+            type: "success",
+            icon: "fa-check",
+            theme: "outline",
+            position: "top-right",
+            duration: 5000,
+            action: {
+              text: "Okay",
+              onClick: (e, toastObject) => {
+                toastObject.goAway(0);
+              }
+            }
+          });
+        })
+        .catch(err => {
+          this.$toasted.show(err.response.data, {
+            type: "error",
+            icon: "fa-times-circle",
+            theme: "outline",
+            position: "top-right",
+            duration: 5000,
+            action: {
+              text: "Okay",
+              onClick: (e, toastObject) => {
+                toastObject.goAway(0);
+              }
+            }
+          });
+        })
+        .finally(() => {
+          this.loading = !this.loading;
+        });
     },
     submitRegister() {
       this.loading = !this.loading;
       axios
         .post(`/auth/register`, this.form)
         .then(response => {
-          toastr.success(response.data);
+          this.loginMode = true;
+          this.$toasted.show(response.data.message, {
+            type: "success",
+            icon: "fa-check",
+            theme: "outline",
+            position: "top-right",
+            duration: 5000,
+            action: {
+              text: "Okay",
+              onClick: (e, toastObject) => {
+                toastObject.goAway(0);
+              }
+            }
+          });
         })
         .catch(err => {
-          toastr.error(err.response.data);
+          this.$toasted.show(err.response.data, {
+            type: "error",
+            icon: "fa-times-circle",
+            theme: "outline",
+            position: "top-right",
+            duration: 5000,
+            action: {
+              text: "Okay",
+              onClick: (e, toastObject) => {
+                toastObject.goAway(0);
+              }
+            }
+          });
         })
         .finally(() => {
           this.loading = !this.loading;

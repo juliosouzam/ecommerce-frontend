@@ -1,9 +1,9 @@
 <template>
   <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-5">
-          <img :src="``" :alt="`${product.title}`" :title="`${product.title}`"/>
+    <div class="container-fluid">
+      <div class="row mt-3">
+        <div class="col-5 text-center">
+          <img class="img-thumbnail" :src="`${product.images[0].path}`" :alt="`${product.title}`" :title="`${product.title}`"/>
         </div>
         <div class="col-7">
             <p>

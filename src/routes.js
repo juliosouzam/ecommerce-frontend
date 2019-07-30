@@ -34,5 +34,6 @@ export default new Router({
             name: 'product',
             component: ProductShow
         }
-    ]
+    ],
+    linkActiveClass: "active"
 });
