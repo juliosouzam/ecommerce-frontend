@@ -108,7 +108,9 @@ export default {
         .post(`/auth/login`, this.form)
         .then(response => {
           this.loginMode = true;
-          this.$toasted.show(response.data.message, {
+          const { name } = response.data.user;
+          localStorage.setItem('_token', response.data.access_token);
+          this.$toasted.show(`Welcome ${name}!`, {
             type: "success",
             icon: "fa-check",
             theme: "outline",

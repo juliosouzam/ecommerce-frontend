@@ -1,14 +1,14 @@
 import axios from './api';
-import VueRouter from 'vue-router';
 
 
-const isSignIn = async () => {
+const isSignIn = () => {
     const _token = localStorage.getItem('_token');
     if (!_token) {
-        
+        document.getElementById('').submit();
     }
 
-    const response = await axios.get(`/user`);
+    return axios.get(`/user`)
+        .then();
 
     return response.data;
 }
