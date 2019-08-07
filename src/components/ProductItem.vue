@@ -10,7 +10,7 @@
         <router-link class="btn btn-outline-info btn-sm" :to="`/${category}/${subcategory}/${product.slug}`">
           <i class="fas fa-eye"></i>
         </router-link>
-        <button type="button" class="btn btn-outline-success btn-sm" @click="addCart">
+        <button type="button" class="btn btn-outline-success btn-sm" @click="addCart(product)">
           <i class="fas fa-cart-plus"></i>
         </button>
       </div>
@@ -30,11 +30,12 @@ export default {
     };
   },
   methods: {
-    addCart() {
-      const _token = localStorage.getItem("_token");
-      if (!_token) {
-        document.getElementById("anchorModal").click();
-      }
+    addCart(product) {
+      this.$store.commit('increment', product);
+      // const _token = localStorage.getItem("_token");
+      // if (!_token) {
+      //   document.getElementById("anchorModal").click();
+      // }
     }
   }
 };

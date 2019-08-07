@@ -24,7 +24,7 @@
         <li class="nav-item">
           <router-link class="nav-link" to="/home">
             Carrinho
-            <span class="badge badge-pill badge-secondary">{{ cartItems }}</span>
+            <span class="badge badge-pill badge-secondary">{{ countItemCart }}</span>
           </router-link>
         </li>
         <li class="nav-item">
@@ -54,6 +54,11 @@ export default {
   },
   mounted() {
     this.getCategories();
+  },
+  computed: {
+    countItemCart() {
+      return this.$store.state.cart.length
+    }
   },
   methods: {
     getCategories() {

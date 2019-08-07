@@ -17,7 +17,8 @@
     "toastr": "^2.1.4",
     "vue": "^2.6.10",
     "vue-router": "^3.0.7",
-    "vue-toasted": "^1.1.27"
+    "vue-toasted": "^1.1.27",
+    "vuex": "^3.1.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.0",
