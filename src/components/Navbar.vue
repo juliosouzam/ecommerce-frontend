@@ -1,15 +1,8 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm">
     <router-link class="navbar-brand" to="/">Loja Virtual</router-link>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -39,35 +32,35 @@
 </template>
 
 <script>
-import axios from "./../services/api";
-import AuthModal from './../components/AuthModal';
+  import axios from "./../services/api";
+  import AuthModal from './../components/AuthModal';
 
-export default {
-  components: {
-    AuthModal
-  },
-  data() {
-    return {
-      cartItems: 0,
-      categories: []
-    };
-  },
-  mounted() {
-    this.getCategories();
-  },
-  computed: {
-    countItemCart() {
-      return this.$store.state.cart.length
+  export default {
+    components: {
+      AuthModal
+    },
+    data() {
+      return {
+        cartItems: 0,
+        categories: []
+      };
+    },
+    mounted() {
+      this.getCategories();
+    },
+    computed: {
+      countItemCart() {
+        return this.$store.state.cart.length
+      }
+    },
+    methods: {
+      getCategories() {
+        axios.get(`/categories`).then(response => {
+          this.categories = response.data.categories;
+        });
+      }
     }
-  },
-  methods: {
-    getCategories() {
-      axios.get(`/categories`).then(response => {
-        this.categories = response.data.categories;
-      });
-    }
-  }
-};
+  };
 </script>
 
 <style>
